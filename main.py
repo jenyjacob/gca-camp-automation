@@ -70,7 +70,7 @@ access_token = token_result["access_token"]
 #     f"users/{user}/drive/root:"
 #     f"/{FILE_PATH}:/content"
 # )
-url = "https://1drv.ms/x/c/a70c056bed6b35d2/IQAMuXMp45_sToR3w6XA0zQKAQHmfSjqZM_NOG8VOuoJRsE?e=hAuHne"
+url = "https://1drv.ms/x/c/a70c056bed6b35d2/IQQMuXMp45_sToR3w6XA0zQKAa0jeBZjBUaaV8AhELxVKqE?download=1"
 
 response = requests.get(
     url,
