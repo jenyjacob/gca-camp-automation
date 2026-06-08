@@ -56,7 +56,7 @@ access_token = token_result["access_token"]
 
 user = os.environ["ONEDRIVE_USER"]
 
-FILE_PATH = "GCA/GCA_2026_Camp.xlsx"
+FILE_PATH = "MACBOOK/GCA/python_workspace/GCA_2026_Camp.xlsx"
 
 url = (
     f"https://graph.microsoft.com/v1.0/"
