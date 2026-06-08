@@ -70,15 +70,9 @@ access_token = token_result["access_token"]
 #     f"users/{user}/drive/root:"
 #     f"/{FILE_PATH}:/content"
 # )
-url = "https://1drv.ms/x/c/a70c056bed6b35d2/IQQMuXMp45_sToR3w6XA0zQKAa0jeBZjBUaaV8AhELxVKqE?download=1"
+url = "https://1drv.ms/x/c/a70c056bed6b35d2/IQAMuXMp45_sToR3w6XA0zQKAQHmfSjqZM_NOG8VOuoJRsE?e=Lese5D&download=1"
 
-response = requests.get(
-    url,
-    headers={
-        "Authorization":
-            f"Bearer {access_token}"
-    }
-)
+response = requests.get(url, allow_redirects=True)
 
 response.raise_for_status()
 
