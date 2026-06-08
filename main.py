@@ -55,20 +55,22 @@ access_token = token_result["access_token"]
 # Download Excel from OneDrive
 # =========================
 
-user = os.environ["ONEDRIVE_USER"]
+# user = os.environ["ONEDRIVE_USER"]
+#https://1drv.ms/x/c/a70c056bed6b35d2/IQAMuXMp45_sToR3w6XA0zQKAQHmfSjqZM_NOG8VOuoJRsE?e=hAuHne
 
 # urls = f"https://graph.microsoft.com/v1.0/users/{user}/drive/root/search(q='GCA_2026_Camp.xlsx')"
 # response = requests.get(urls, headers=headers)
 # for item in response.json().get("value", []):
 #     print(item["name"], "→", item["parentReference"]["path"])
 
-FILE_PATH = "Documents/python_workspace/GCA_2026_Camp.xlsx"
+# FILE_PATH = "Documents/python_workspace/GCA_2026_Camp.xlsx"
 
-url = (
-    f"https://graph.microsoft.com/v1.0/"
-    f"users/{user}/drive/root:"
-    f"/{FILE_PATH}:/content"
-)
+# url = (
+#     f"https://graph.microsoft.com/v1.0/"
+#     f"users/{user}/drive/root:"
+#     f"/{FILE_PATH}:/content"
+# )
+url = "https://1drv.ms/x/c/a70c056bed6b35d2/IQAMuXMp45_sToR3w6XA0zQKAQHmfSjqZM_NOG8VOuoJRsE?e=hAuHne"
 
 response = requests.get(
     url,
