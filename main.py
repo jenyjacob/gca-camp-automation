@@ -1,4 +1,5 @@
 import os
+from wsgiref import headers
 import requests
 import pandas as pd
 import gspread
@@ -55,6 +56,11 @@ access_token = token_result["access_token"]
 # =========================
 
 user = os.environ["ONEDRIVE_USER"]
+
+urls = f"https://graph.microsoft.com/v1.0/users/{user}/drive/root/search(q='GCA_2026_Camp.xlsx')"
+response = requests.get(urls, headers=headers)
+for item in response.json().get("value", []):
+    print(item["name"], "→", item["parentReference"]["path"])
 
 FILE_PATH = "Documents/MACBOOK/GCA/python_workspace/GCA_2026_Camp.xlsx"
 

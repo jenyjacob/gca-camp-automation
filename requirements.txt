@@ -4,3 +4,4 @@ requests
 msal
 gspread
 google-auth
+wsgiref
