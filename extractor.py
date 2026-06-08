@@ -80,6 +80,7 @@ def extract_attendees(df):
         })
 
     output_df = pd.DataFrame(results)
+    output_df = output_df.fillna("").astype(str)
 
     output_df.insert(
         0,
