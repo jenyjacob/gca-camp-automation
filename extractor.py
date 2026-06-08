@@ -84,7 +84,7 @@ def extract_attendees(df):
 
     output_df.insert(
         0,
-        "",
+        "No",
         range(1, len(output_df) + 1)
     )
 
