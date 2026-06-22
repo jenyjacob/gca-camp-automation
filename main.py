@@ -110,11 +110,8 @@ client = gspread.authorize(creds)
 sheet_name = os.environ[
     "GOOGLE_SHEET_NAME"
 ]
-
-sheet = client.open(sheet_name).worksheet(
-    "Adults_Children"
-)
-
+workbook = client.open(sheet_name)
+sheet = workbook.worksheet("Adults_Children")
 sheet.clear()
 
 sheet.update(
