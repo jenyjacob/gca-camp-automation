@@ -5,7 +5,7 @@ import re
 def extract_attendees(df):
 
     results = []
-
+    countNumber = 100
     for _, row in df.iterrows():
 
      phone = row.get("Phone Number", "")
@@ -15,6 +15,8 @@ def extract_attendees(df):
      boat = row.get("Please indicate the number of participants for Boat Tour", "")
      attendee_text = str(row.get("Attendee Information", "") or "")
      children_text = str(row.get("Children's Information", "") or "")
+     familygroup = countNumber+1
+     countNumber += 1
 
     # Extract adults
      main_pattern = re.search(r"First Name:\s*(.*?)\s*,\s*Last Name:\s*(.*?)\s*,\s*T-shirt Size:\s*(.*?)(?:\n|$)",
@@ -47,7 +49,8 @@ def extract_attendees(df):
         "Boat Tour": boat,
         "Allergies": allergies,
         "Phone Number": phone,
-        "Email": email
+        "Email": email,
+        "Family Group": familygroup
 
     })
 
@@ -62,7 +65,9 @@ def extract_attendees(df):
             "Boat Tour": "",
             "Allergies": "",
             "Phone Number": "",
-            "Email": ""
+            "Email": "",
+            "Family Group": familygroup
+            
         })
 
     # Add children
@@ -76,7 +81,8 @@ def extract_attendees(df):
             "Boat Tour": "",
             "Allergies": "",
             "Phone Number": "",
-            "Email": ""
+            "Email": "",
+            "Family Group": familygroup
         })
 
     output_df = pd.DataFrame(results)
