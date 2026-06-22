@@ -7,7 +7,7 @@ import gspread
 from msal import ConfidentialClientApplication
 from google.oauth2.service_account import Credentials
 
-from extractor import extract_attendees
+from extractor import extract_attendees, extract_tshirts
 
 
 # =========================
@@ -83,10 +83,12 @@ print("Downloaded latest Excel file")
 df = pd.read_excel("camp.xlsx")
 
 output_df = extract_attendees(df)
+tshirt_df = extract_tshirts(output_df)
 
 print(
     f"Processed {len(output_df)} rows"
 )
+print(f"Extracted {len(tshirt_df)} T-shirt entries")
 
 
 # =========================
@@ -119,6 +121,25 @@ sheet.update(
     [output_df.columns.tolist()]
     + output_df.values.tolist()
 )
+print("Adults_Children sheet updated successfully")
+
+# --- T-Shirts sheet ---
+try:
+    tshirt_sheet = workbook.worksheet("T-Shirts")
+except gspread.exceptions.WorksheetNotFound:
+    tshirt_sheet = workbook.add_worksheet(
+        title="T-Shirts",
+        rows=len(tshirt_df) + 10,
+        cols=10
+    )
+    print("Created new 'T-Shirts' worksheet")
+
+tshirt_sheet.clear()
+tshirt_sheet.update(
+    [tshirt_df.columns.tolist()]
+    + tshirt_df.values.tolist()
+)
+print("T-Shirts sheet updated successfully")
 
 print(
     "Google Sheet updated successfully"

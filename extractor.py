@@ -95,3 +95,13 @@ def extract_attendees(df):
     )
 
     return output_df
+def extract_tshirts(attendees_df):
+    """
+    Derives a T-shirt summary sheet from the already-processed attendees DataFrame.
+    Returns a DataFrame with Name, Type, and T-Shirt Size columns, sorted by size.
+    """
+    tshirt_df = attendees_df[["Name", "Type", "T-Shirt Size"]].copy().reset_index(drop=True)
+
+    tshirt_df.insert(0, "No", range(1, len(tshirt_df) + 1))
+
+    return tshirt_df
